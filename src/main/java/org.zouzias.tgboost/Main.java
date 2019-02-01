@@ -1,10 +1,12 @@
 package org.zouzias.tgboost;
 
+import org.zouzias.tgboost.serialization.ModelSerializer;
+
 import java.util.ArrayList;
 
 public class Main {
 
-    public static void training(String[] args){
+    public static void training(String[] args) {
         String file_training = args[1];
         String file_validation = args[2];
         String file_model = args[3];
@@ -26,7 +28,7 @@ public class Main {
 
         String[] cat_features = args[19].split(",");
         ArrayList<String> categorical_features = new ArrayList<>();
-        for(String cat_feature:cat_features){
+        for(String cat_feature:cat_features) {
             categorical_features.add(cat_feature);
         }
 
@@ -53,7 +55,7 @@ public class Main {
         ModelSerializer.save_model(tgb,file_model);
     }
 
-    public static void testing(String[] args){
+    public static void testing(String[] args) {
         String file_model = args[1];
         String file_testing = args[2];
         String file_output = args[3];
@@ -62,10 +64,10 @@ public class Main {
         tgb.predict(file_testing, file_output);
     }
 
-    public static void main(String[] args){
-        if(args[0].equals("training")){
+    public static void main(String[] args) {
+        if (args[0].equals("training") ) {
             training(args);
-        }else if(args[0].equals("testing")){
+        } else if (args[0].equals("testing") ) {
             testing(args);
         }
     }

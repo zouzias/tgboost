@@ -1,5 +1,8 @@
 package org.zouzias.tgboost;
 
+import org.zouzias.tgboost.data.TestData;
+import org.zouzias.tgboost.data.TrainData;
+import org.zouzias.tgboost.data.ValidationData;
 import org.zouzias.tgboost.loss.LogisticLoss;
 import org.zouzias.tgboost.loss.SquareLoss;
 
@@ -11,9 +14,15 @@ import java.util.Arrays;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.zouzias.tgboost.loss.Loss;
+import org.zouzias.tgboost.metrics.Metric;
+import org.zouzias.tgboost.sampling.ColumnSampler;
+import org.zouzias.tgboost.sampling.RowSampler;
+import org.zouzias.tgboost.trees.Tree;
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
-
+/**
+ * Gradient Boosting Machine
+ */
 public class GBM {
     private ArrayList<Tree> trees = new ArrayList<>();
     private double eta;
@@ -209,26 +218,26 @@ public class GBM {
 
     }
 
-    private double calculate_metric(String eval_metric,double[] pred,double[] label){
-        if(eval_metric.equals("acc")){
+    private double calculate_metric(String eval_metric,double[] pred,double[] label) {
+        if(eval_metric.equals("acc") ){
             return Metric.accuracy(pred,label);
-        }else if(eval_metric.equals("error")){
+        } else if(eval_metric.equals("error" )){
             return Metric.error(pred,label);
-        }else if(eval_metric.equals("mse")){
+        } else if(eval_metric.equals("mse") ){
             return Metric.mean_square_error(pred,label);
-        }else if(eval_metric.equals("mae")){
+        } else if(eval_metric.equals("mae") ){
             return Metric.mean_absolute_error(pred,label);
-        }else if(eval_metric.equals("auc")){
+        } else if(eval_metric.equals("auc") ){
             return Metric.auc(pred,label);
-        }else {
+        } else {
             throw new NotImplementedException();
         }
     }
 
 
-    private double average(double[] vals){
+    private double average(double[] vals) {
         double sum = 0.0;
-        for(double v:vals){
+        for(double v:vals) {
             sum += v;
         }
         return sum/vals.length;

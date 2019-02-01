@@ -1,6 +1,9 @@
 package org.zouzias.tgboost;
 
+import org.zouzias.tgboost.data.Data;
+import org.zouzias.tgboost.data.TrainData;
 import org.zouzias.tgboost.loss.Loss;
+import org.zouzias.tgboost.trees.TreeNode;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -87,7 +90,7 @@ public class ClassList {
                 //consider categorical feature
                 if(attribute_list.cat_features_cols.contains(split_feature)){
                     ArrayList<Double> left_child_catvalue = treenode.split_left_child_catvalue;
-                    if(val==Data.NULL){
+                    if(val== Data.NULL){
                         if(nan_go_to==0){
                             corresponding_tree_node[i] = treenode.nan_child;
                         }else if(nan_go_to==1){

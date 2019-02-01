@@ -9,7 +9,7 @@ public class LogisticLoss implements Loss{
     public double[] transform(double[] pred){
         double[] ret = new double[pred.length];
         for(int i=0;i<ret.length;i++){
-            ret[i] = clip(1.0 / (1.0+Math.exp(-pred[i])));
+            ret[i] = clip(1.0 / (1.0 + Math.exp(-pred[i])));
         }
         return ret;
     }

@@ -1,5 +1,7 @@
 package org.zouzias.tgboost;
 
+import org.zouzias.tgboost.data.TrainData;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
@@ -13,7 +15,7 @@ public class AttributeList {
     public float[][] origin_feature;
     public ArrayList<Integer> cat_features_cols;
 
-    public AttributeList(TrainData data){
+    public AttributeList(TrainData data) {
         missing_value_attribute_list = data.missing_index;
         feature_dim = data.feature_dim;
         attribute_list = data.feature_value_index;
@@ -25,8 +27,8 @@ public class AttributeList {
     }
 
     //pre-sort: for each feature,sort (value,index) by the value
-    private void sort_attribute_list(){
-        for(int i=0;i<feature_dim;i++){
+    private void sort_attribute_list() {
+        for(int i=0;i<feature_dim;i++) {
             Arrays.sort(attribute_list[i], new Comparator<float[]>() {
                 @Override
                 public int compare(float[] a, float[] b) {
@@ -36,16 +38,16 @@ public class AttributeList {
         }
     }
 
-    private void initialize_cutting_inds_thresholds(){
+    private void initialize_cutting_inds_thresholds() {
         cutting_inds = new int[feature_dim][][];
         cutting_thresholds = new float[feature_dim][];
 
-        for(int i=0;i<feature_dim;i++){
+        for(int i=0;i<feature_dim;i++) {
             //for this feature, get its cutting index
             ArrayList<Integer> list = new ArrayList<>();
             int last_index = 0;
-            for(int j=0;j<attribute_list[i].length;j++){
-                if(attribute_list[i][j][0]==attribute_list[i][last_index][0]){
+            for(int j=0;j<attribute_list[i].length;j++) {
+                if(attribute_list[i][j][0]==attribute_list[i][last_index][0]) {
                     last_index = j;
                 }else {
                     list.add(last_index);
@@ -64,11 +66,11 @@ public class AttributeList {
 
             list.add(0,-1);
             list.add(attribute_list[i].length-1);
-            for(int k=0;k<cutting_inds[i].length;k++){
+            for(int k=0;k<cutting_inds[i].length;k++) {
                 int start_ind = list.get(k)+1;
                 int end_ind = list.get(k+1);
                 cutting_inds[i][k] = new int[end_ind-start_ind+1];
-                for(int m=0;m<cutting_inds[i][k].length;m++){
+                for(int m=0;m<cutting_inds[i][k].length;m++) {
                     cutting_inds[i][k][m] = (int) attribute_list[i][start_ind+m][1];
                 }
             }

@@ -1,5 +1,10 @@
-package org.zouzias.tgboost;
+package org.zouzias.tgboost.trees;
 
+import org.zouzias.tgboost.AttributeList;
+import org.zouzias.tgboost.ClassList;
+import org.zouzias.tgboost.data.Data;
+import org.zouzias.tgboost.sampling.ColumnSampler;
+import org.zouzias.tgboost.sampling.RowSampler;
 
 import java.util.*;
 import java.util.concurrent.*;

@@ -1,4 +1,4 @@
-package org.zouzias.tgboost;
+package org.zouzias.tgboost.serialization;
 
 /*
 Serialize the GBM model into txt file, unserialize the txt file into GBM model.
@@ -21,9 +21,12 @@ for example:
     2:leaf=0.9900
  */
 
+import org.zouzias.tgboost.GBM;
 import org.zouzias.tgboost.loss.LogisticLoss;
 import org.zouzias.tgboost.loss.Loss;
 import org.zouzias.tgboost.loss.SquareLoss;
+import org.zouzias.tgboost.trees.Tree;
+import org.zouzias.tgboost.trees.TreeNode;
 
 import java.io.*;
 import java.nio.file.Files;
@@ -79,7 +82,7 @@ public class ModelSerializer {
     }
 
     //Serialize the GBM model into txt file
-    public static void save_model(GBM gbm,String path){
+    public static void save_model(GBM gbm, String path){
         double first_round_predict = gbm.getFirst_round_pred();
         double eta = gbm.getEta();
         Loss loss = gbm.getLoss();
