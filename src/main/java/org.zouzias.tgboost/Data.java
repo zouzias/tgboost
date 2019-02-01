@@ -3,15 +3,13 @@
 //second scan, get each feature's (value,index) and missing value indexes
 //if we use ArrayList,only one scanning is needed, but it is memory consumption
 
-package main;
+package org.zouzias.tgboost;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashMap;
-import java.util.HashSet;
 
 public class Data{
     //we use -Double.MAX_VALUE to represent missing value

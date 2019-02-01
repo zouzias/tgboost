@@ -1,6 +1,7 @@
-package main;
+package org.zouzias.tgboost;
 
-import sun.reflect.generics.reflectiveObjects.NotImplementedException;
+import org.zouzias.tgboost.loss.LogisticLoss;
+import org.zouzias.tgboost.loss.SquareLoss;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -9,6 +10,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import org.zouzias.tgboost.loss.Loss;
+import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 
 public class GBM {

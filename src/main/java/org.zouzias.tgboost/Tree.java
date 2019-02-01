@@ -1,4 +1,5 @@
-package main;
+package org.zouzias.tgboost;
+
 
 import java.util.*;
 import java.util.concurrent.*;
@@ -15,6 +16,7 @@ public class Tree {
     private int num_thread;
     private ArrayList<Integer> cat_features_cols;
     private Queue<TreeNode> alive_nodes = new LinkedList<>();
+
     //number of tree node of this tree
     public int nodes_cnt = 0;
     //number of nan tree node of this tree
@@ -369,7 +371,7 @@ public class Tree {
     }
 
 
-    class PredictCallable implements Callable{
+    class PredictCallable implements Callable {
         private float[] feature;
         public PredictCallable(float[] feature){
             this.feature = feature;
@@ -378,7 +380,7 @@ public class Tree {
         public Double call(){
             TreeNode cur_tree_node = root;
             while(!cur_tree_node.is_leaf){
-                if(feature[cur_tree_node.split_feature]==Data.NULL){
+                if(feature[cur_tree_node.split_feature]== Data.NULL){
                     //it is missing value
                     if(cur_tree_node.nan_go_to==0){
                         cur_tree_node = cur_tree_node.nan_child;
@@ -439,9 +441,7 @@ public class Tree {
         for(int i=0;i<ret.length;i++){
             try{
                 ret[i] = (double) list.get(i).get();
-            }catch (InterruptedException e){
-                e.printStackTrace();
-            }catch (ExecutionException e){
+            }catch (InterruptedException | ExecutionException e){
                 e.printStackTrace();
             }
         }

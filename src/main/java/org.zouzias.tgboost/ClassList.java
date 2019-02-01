@@ -1,6 +1,6 @@
-package main;
+package org.zouzias.tgboost;
 
-import org.omg.CORBA.DATA_CONVERSION;
+import org.zouzias.tgboost.loss.Loss;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -32,7 +32,7 @@ public class ClassList {
         }
     }
 
-    public void update_grad_hess(Loss loss,double scale_pos_weight){
+    public void update_grad_hess(Loss loss, double scale_pos_weight){
         grad = loss.grad(pred,label);
         hess = loss.hess(pred,label);
         if(scale_pos_weight != 1.0){

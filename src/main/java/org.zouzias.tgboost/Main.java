@@ -1,8 +1,9 @@
-package main;
+package org.zouzias.tgboost;
 
 import java.util.ArrayList;
 
 public class Main {
+
     public static void training(String[] args){
         String file_training = args[1];
         String file_validation = args[2];

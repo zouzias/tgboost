@@ -8,7 +8,7 @@
 //        its right child's index is 3*root.index+1,
 //        the middle child is nan_child, its index is 3*root.index
 
-package main;
+package org.zouzias.tgboost;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -48,14 +48,14 @@ public class TreeNode {
     public HashMap<Integer,HashMap<Integer,double[]>> cat_feature_col_value_GH = new HashMap<>();
     private HashMap<Integer,ArrayList<Integer>> cat_feature_col_leftcatvalue = new HashMap<>();
 
-    public TreeNode(int index,double leaf_score){
+    TreeNode(int index,double leaf_score){
         //leaf node construct
         this.is_leaf = true;
         this.index = index;
         this.leaf_score = leaf_score;
     }
 
-    public TreeNode(int index,int split_feature,double split_threshold,double nan_go_to){
+    TreeNode(int index,int split_feature,double split_threshold,double nan_go_to){
         //internal node construct,numeric split feature
         this.is_leaf = false;
         this.index = index;
@@ -64,8 +64,8 @@ public class TreeNode {
         this.nan_go_to = nan_go_to;
     }
 
-    public TreeNode(int index,int split_feature,ArrayList<Double> split_left_child_catvalue,double nan_go_to){
-        //internal node construct,categorical split feature
+    TreeNode(int index,int split_feature,ArrayList<Double> split_left_child_catvalue,double nan_go_to){
+        // internal node construct,categorical split feature
         this.is_leaf = false;
         this.index = index;
         this.split_feature = split_feature;
@@ -74,7 +74,7 @@ public class TreeNode {
     }
 
 
-    public TreeNode(int index,int depth,int feature_dim,boolean is_leaf){
+    TreeNode(int index,int depth,int feature_dim,boolean is_leaf){
         this.index = index;
         this.depth = depth;
         this.feature_dim = feature_dim;

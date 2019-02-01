@@ -1,4 +1,4 @@
-package main;
+package org.zouzias.tgboost;
 
 /*
 Serialize the GBM model into txt file, unserialize the txt file into GBM model.
@@ -20,6 +20,10 @@ for example:
     1:[4,num,10.9000],missing_go_to=2
     2:leaf=0.9900
  */
+
+import org.zouzias.tgboost.loss.LogisticLoss;
+import org.zouzias.tgboost.loss.Loss;
+import org.zouzias.tgboost.loss.SquareLoss;
 
 import java.io.*;
 import java.nio.file.Files;

@@ -1,2 +1,5 @@
+target/
+python-package/build/
+.idea/
 *.pyc
 *.class

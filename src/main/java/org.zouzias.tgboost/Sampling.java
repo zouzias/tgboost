@@ -1,4 +1,4 @@
-package main;
+package org.zouzias.tgboost;
 
 import java.util.ArrayList;
 import java.util.Collections;
